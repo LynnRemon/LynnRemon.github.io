@@ -33,6 +33,24 @@
   
 
   
+      
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
 
   <link rel="stylesheet" href="/css/style.css" >
   <link rel="stylesheet" href="/css/partial/dark.css" >
@@ -123,37 +141,38 @@
     
 <header class="header">
         
-            <div class="logo">
-                    <a href="/"><img src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/images/2020/07/27/baokemeng.webp" onerror=this.onerror=null,this.src="/img/loading.gif"></a>
+            <div class="title">
+                <a href="/">Remon的记事本</a>
             </div>
          
     </div>
      
+
+            <div class="motto">
+                <span>生活不止眼前的苟且，还有诗和远方。</span>
+            </div>
+    
     
             <div class="social">
                 
-                        <a class="social-icon" href="https://github.com/a2396837" target="_blank" title="Github">
+                        <a class="social-icon" href="https://github.com/LynnRemon" target="_blank" title="Github">
                             <i class="iconfont icon-GitHub" aria-hidden="true"></i>
                           </a>
                  
-                        <a class="social-icon" href="mailto:894049579@qq.com" target="_blank" title="Email">
+                        <a class="social-icon" href="mailto:928348825@qq.com" target="_blank" title="Email">
                             <i class="iconfont icon-email" aria-hidden="true"></i>
                           </a>
                  
-                        <a class="social-icon" href="https://steamcommunity.com/id/a2396837" target="_blank" title="Steam">
+                        <a class="social-icon" href="https://steamcommunity.com/profiles/76561198442727644/" target="_blank" title="Steam">
                             <i class="iconfont icon-steam" aria-hidden="true"></i>
                           </a>
                  
-                        <a class="social-icon" href="https://space.bilibili.com/8823569" target="_blank" title="Bilibili">
+                        <a class="social-icon" href="https://space.bilibili.com/8698438" target="_blank" title="Bilibili">
                             <i class="iconfont icon-bilibili" aria-hidden="true"></i>
                           </a>
                  
-                        <a class="social-icon" href="https://music.163.com/#/user/home?id=262078590" target="_blank" title="Netmusic">
+                        <a class="social-icon" href="https://music.163.com/#/user/home?id=314507689" target="_blank" title="Netmusic">
                             <i class="iconfont icon-wangyiyunyinle1" aria-hidden="true"></i>
-                          </a>
-                 
-                        <a class="social-icon" href="/atom.xml" target="_blank" title="rss">
-                            <i class="iconfont icon-rss" aria-hidden="true"></i>
                           </a>
                  
             </div>
@@ -171,6 +190,13 @@
                   <h1>2021  <i class="symbolic-animals icon-ox"></i></h1>
                 </div>
         </div>
+        
+        <li class="archive-item">
+            <a class="archive-item-link" href="/2021/07/07/First/">First</a>
+            <span class="archive-item-date">2021-07-07</span>
+        </li>
+    
+        
         
         <li class="archive-item">
             <a class="archive-item-link" href="/2021/07/07/hello-world/">Hello World</a>
@@ -203,7 +229,7 @@
     
 <div id="bottom-outer">
     <div id="bottom-inner">
-        © 2020 <i class="fa fa-heart" id="heart"></i> Remon 
+        © 2021 <i class="fa fa-heart" id="heart"></i> Remon 
         <br>
         Powered by 
         <a target="_blank" rel="noopener" href="http://hexo.io">hexo</a> | Theme is <a target="_blank" rel="noopener" href="https://github.com/a2396837/hexo-theme-blank/">blank</a>
@@ -266,12 +292,65 @@
 
 
 
+  
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"><i class="fas fa-music" style="color: #Fff;"></i></div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/audio.css">
+	<ol id="playlist"></ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
+<script>
+	var playlist = [];
+	
+		  playlist.push({title:'You',artist:'Approaching Nirvana',mp3:'http://music.163.com/song/media/outer/url?id=3932159.mp3',cover:'http://p4.music.126.net/4d8hnmrMxDrKnn_0i1JqyA==/1728432278871211.jpg'})
+	  
+	var isRotate = true;
+	var autoplay = false;
+  </script>
+<script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script>
   
 
 
+  <script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/firework.js"></script>
+  
 
 
   
