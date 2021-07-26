@@ -26,7 +26,7 @@
 
   
 
-  <title>Archives: 2021/7 | Remon的记事本</title>
+  <title>04 Linux多线程 | Remon的记事本</title>
 
   
 
@@ -191,77 +191,129 @@
 </header>
 
     
-<div class="post-wrap archive">
+<article id="post">
+  <div class="post-title">04 Linux多线程</div>
+  
+<div class="post-meta">
     
     
-        
-        
-        <div class="yearzodiac">
-                <div class="years">
-                  <h1>2021  <i class="symbolic-animals icon-ox"></i></h1>
-                </div>
-        </div>
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/">04 Linux多线程</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
+      <div class="post-meta-item date">
+        <span title="Created 2021.07.26"><i class="far fa-calendar-alt"></i> 2021.07.26</span>
+      </div>
+      <div class="post-meta-item updated">
+        <span title="Updated 2021.07.26"><i class="far fa-calendar-check"></i> 2021.07.26</span>
+      </div>
+     
     
+      <div class="post-meta-item categories">
         
+          <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E7%9C%8B%E4%BC%BC%E6%AD%A3%E7%BB%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">看似正经的学习笔记</a>
         
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/03%20%E8%A7%A6%E6%91%B8%E5%B1%8F%E5%BA%94%E7%94%A8/">03 触摸屏应用</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
+      </div>
+     
     
+     <div class="post-meta-item wordcount">
         
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">191 words</span>
+           
         
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/02%20lcd%E6%98%BE%E7%A4%BAbmp/">02 lcd显示bmp</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
-    
-        
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/01%20%E6%96%87%E4%BB%B6IO/">01 文件IO</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
-    
-        
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/00%20Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">00 Linux基本操作</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
-    
-        
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/16/%E8%A5%BF%E5%AE%89%E5%B0%8F%E8%AE%B0/">西安小记</a>
-            <span class="archive-item-date">2021-07-16</span>
-        </li>
-    
-        
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/07/First/">First</a>
-            <span class="archive-item-date">2021-07-07</span>
-        </li>
-    
-    <div class="arc_pag">
-       <nav class="paginator">
-      
-            
-</nav>
-
-     </div>
+          <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                               
+      </div>
+     
 </div>
 
 
+  
+  <div class="content">
+        <div><h1 id="linux多线程"><a href="#linux多线程" class="headerlink" title="linux多线程"></a><center>linux多线程</center></h1><h2 id="1-线程是啥？"><a href="#1-线程是啥？" class="headerlink" title="1.线程是啥？"></a>1.线程是啥？</h2><p>系统调度的最小单位 线程</p>
+<h2 id="2-主线程和子线程"><a href="#2-主线程和子线程" class="headerlink" title="2.主线程和子线程"></a>2.主线程和子线程</h2><p>main 主线程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main（）</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>（<span class="number">1</span>）</span><br><span class="line">	&#123;</span><br><span class="line">	   <span class="built_in">printf</span>(<span class="string">&quot;1111/n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子线程  后来创建出来的线程</p>
+<h2 id="3-多线程的原理"><a href="#3-多线程的原理" class="headerlink" title="3.多线程的原理"></a>3.多线程的原理</h2><p><img src= "/img/loading.gif" data-src="%E5%A4%9A%E7%BA%BF%E7%A8%8B.png" alt="04Linux多线程"></p>
+<h2 id="4-多线程创建"><a href="#4-多线程创建" class="headerlink" title="4.多线程创建"></a>4.多线程创建</h2><pre><code> pthread_create()
+ 
+  #include &lt;pthread.h&gt;
+
+   int pthread_create(pthread_t *thread, //线程名字的地址
+             const pthread_attr_t *attr,//线程的属性 NULL 默认属性
+        void *(*start_routine) (void *),//任务函数的地址
+                               void *arg//传给任务函数的参数 不需要 填NULL     
+                                      
+   Compile and link with -pthread.
+   编译  程序需要 链接多线程系统库
+   
+   gcc demo.c -o demo -lpthread
+   arm-linux-gcc demo.c -o demo -lpthread
+</code></pre>
+<h2 id="5-代码步骤"><a href="#5-代码步骤" class="headerlink" title="5.代码步骤"></a>5.代码步骤</h2><pre><code> 1.给线程起名字
+   
+  pthread_t p;
+  
+ 2.设置任务函数
+ 
+ void *fun（void *arg）
+ &#123;
+ 
+ &#125;
+ 
+ 3.创建线程
+  pthread_create()
+</code></pre>
+</div>
+        
+          <div class="post-copyright">
+                  <div class="copyright-item">
+                      <span> Author: Remon</span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> Link: <a href="http://lynnremon.github.io/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/">http://lynnremon.github.io/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a></span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
+                  </div>
+          </div>
+        
+  </div>
+
+    <div class="post_tags">
+      
+    </div>
+    <div class="post-nav">
+      
+      
+        <div class="post-nav-next post-nav-item">
+            <a href="/2021/07/26/03%20%E8%A7%A6%E6%91%B8%E5%B1%8F%E5%BA%94%E7%94%A8/" >03 触摸屏应用<i class="fa fa-chevron-right"></i></a>
+        </div>
+      
+    </div>
+      
 
 
 
+  <div id="valine"></div>
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  <script>
+        new Valine({
+          el: '#valine',
+          appId: "KmM61A8oMvUMXRrby0axQkGx-gzGzoHsz",
+          appKey: "0XVRwiQnROzLaM1tmxIBXjQu",
+          avatar: "mm",
+          lang: "",
+          meta: 'nick,mail,link'.split(','),
+          requiredFields: 'nick,mail'.split(','),
+          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
+          pageSize:'10',
+          recordIP: 'false',
+          serverURLs: "",
+          emojiCDN: "",
+          enableQQ: "true",
+        });
+  </script>
+  
+
+</article>
 
     
 <a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
