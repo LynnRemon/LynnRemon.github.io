@@ -26,7 +26,7 @@
 
   
 
-  <title>04 Linux多线程 | Remon的记事本</title>
+  <title>05可编程音视频播放器 | Remon的记事本</title>
 
   
 
@@ -192,7 +192,7 @@
 
     
 <article id="post">
-  <div class="post-title">04 Linux多线程</div>
+  <div class="post-title">05可编程音视频播放器</div>
   
 <div class="post-meta">
     
@@ -214,7 +214,7 @@
     
      <div class="post-meta-item wordcount">
         
-          <i class="fas fa-pencil-alt"></i> <span class="post-count">191 words</span>
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">346 words</span>
            
         
           <i class="far fa-clock"></i> <span class="post-count">1 min</span>
@@ -226,41 +226,20 @@
 
   
   <div class="content">
-        <div><h1 id="linux多线程"><a href="#linux多线程" class="headerlink" title="linux多线程"></a><center>linux多线程</center></h1><h2 id="1-线程是啥？"><a href="#1-线程是啥？" class="headerlink" title="1.线程是啥？"></a>1.线程是啥？</h2><p>系统调度的最小单位 线程</p>
-<h2 id="2-主线程和子线程"><a href="#2-主线程和子线程" class="headerlink" title="2.主线程和子线程"></a>2.主线程和子线程</h2><p>main 主线程</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main（）</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>（<span class="number">1</span>）</span><br><span class="line">	&#123;</span><br><span class="line">	   <span class="built_in">printf</span>(<span class="string">&quot;1111/n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div><h1 id="可编程音视频播放器"><a href="#可编程音视频播放器" class="headerlink" title="可编程音视频播放器"></a><center>可编程音视频播放器</center></h1><h2 id="1-mplayer可编程播放器"><a href="#1-mplayer可编程播放器" class="headerlink" title="1.mplayer可编程播放器"></a>1.mplayer可编程播放器</h2><p>​    1.下载mplayer dream.avi到开发板<br>​    2.给播放器执行权限<br>​       chmod 777 mplayer<br>​    3.把mplayer 移动到开发板的 /bin<br>​        mv mplyer /bin<br>​    4.测试mplayer是否可以正常使用<br>​       mplayer dream.avi<br>​    </p>
+<h2 id="2-mplayer控制命令的使用"><a href="#2-mplayer控制命令的使用" class="headerlink" title="2.mplayer控制命令的使用"></a>2.mplayer控制命令的使用</h2><p>​    mplayer -slave -quiet -input  file=/pipe  -geometry  0:0 -zoom -x 800 -y 480  dream.avi<br>​    mplayer  播放工具<br>​    -slave   开启命令模式<br>​    -quiet    去除杂项信息<br>​    -input file=/pipe  设置通信管道（命令的输入端）<br>​     -geometry  0:0     播放窗口的起点坐标<br>​     -zoom -x 800 -y 480   视频窗体大小<br>​     dream.avi     视频文件名<br>​     </p>
+<h2 id="3-使用命令控制播放器"><a href="#3-使用命令控制播放器" class="headerlink" title="3.使用命令控制播放器"></a>3.使用命令控制播放器</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>删除旧管道 （如果有）</span><br><span class="line">  rm /pipe</span><br><span class="line"><span class="number">2.</span>新建新管道</span><br><span class="line">  mkfifo /pipe</span><br><span class="line"><span class="number">3.</span>给管道权限</span><br><span class="line">  chmod <span class="number">777</span> /pipe</span><br><span class="line"><span class="number">4.</span>使用指令后台播放视频(ctrl c 失效)</span><br><span class="line">    mplayer -slave -quiet -input  file=/pipe  -geometry  <span class="number">0</span>:<span class="number">0</span> -zoom -x <span class="number">800</span> -y <span class="number">480</span>  dream.avi &amp;</span><br><span class="line"><span class="number">5.</span>通过命令行把控制命令输入到管道中，控制播放器</span><br><span class="line">   往管道里面填写控制命令</span><br><span class="line">  echo pause &gt;&gt;  /pipe   <span class="comment">//暂停 继续</span></span><br><span class="line">  echo volume <span class="number">-10</span> &gt;&gt; /pipe <span class="comment">//音量-10</span></span><br><span class="line">  echo volume +<span class="number">10</span> &gt;&gt; /pipe <span class="comment">//音量+10</span></span><br><span class="line">  echo seek +<span class="number">5</span> &gt; /pipe <span class="comment">//快进10	  </span></span><br><span class="line">  echo seek <span class="number">-5</span> &gt; /pipe <span class="comment">//快退10	</span></span><br><span class="line">  killall -kill mplayer   关闭播放器	</span><br></pre></td></tr></table></figure>
 
-<p>子线程  后来创建出来的线程</p>
-<h2 id="3-多线程的原理"><a href="#3-多线程的原理" class="headerlink" title="3.多线程的原理"></a>3.多线程的原理</h2><p><img src= "/img/loading.gif" data-src="%E5%A4%9A%E7%BA%BF%E7%A8%8B.png" alt="04 Linux多线程"></p>
-<h2 id="4-多线程创建"><a href="#4-多线程创建" class="headerlink" title="4.多线程创建"></a>4.多线程创建</h2><pre><code> pthread_create()
- 
-  #include &lt;pthread.h&gt;
 
-   int pthread_create(pthread_t *thread, //线程名字的地址
-             const pthread_attr_t *attr,//线程的属性 NULL 默认属性
-        void *(*start_routine) (void *),//任务函数的地址
-                               void *arg//传给任务函数的参数 不需要 填NULL     
-                                      
-   Compile and link with -pthread.
-   编译  程序需要 链接多线程系统库
-   
-   gcc demo.c -o demo -lpthread
-   arm-linux-gcc demo.c -o demo -lpthread
-</code></pre>
-<h2 id="5-代码步骤"><a href="#5-代码步骤" class="headerlink" title="5.代码步骤"></a>5.代码步骤</h2><pre><code> 1.给线程起名字
-   
-  pthread_t p;
-  
- 2.设置任务函数
- 
- void *fun（void *arg）
- &#123;
- 
- &#125;
- 
- 3.创建线程
-  pthread_create()
-</code></pre>
+
+<h2 id="4-system-函数应用"><a href="#4-system-函数应用" class="headerlink" title="4.system 函数应用"></a>4.system 函数应用</h2><p>​      </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">system</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *command)</span></span>; </span><br><span class="line">  </span><br><span class="line">  system（<span class="string">&quot;mplayer dream.avi&quot;</span>）;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="音频播放器"><a href="#音频播放器" class="headerlink" title="音频播放器"></a>音频播放器</h2><p>​       </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mplayer </span><br><span class="line">   </span><br><span class="line">mplayer -slave -quiet -input  file=/pipe  <span class="number">1.</span>mp3 &amp;   	  </span><br></pre></td></tr></table></figure>
+
 </div>
         
           <div class="post-copyright">
@@ -268,7 +247,7 @@
                       <span> Author: Remon</span>
                   </div>
                   <div class="copyright-item">
-                      <span> Link: <a href="http://lynnremon.github.io/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/">http://lynnremon.github.io/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a></span>
+                      <span> Link: <a href="http://lynnremon.github.io/2021/07/26/05%20%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/">http://lynnremon.github.io/2021/07/26/05%20%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/</a></span>
                   </div>
                   <div class="copyright-item">
                       <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
@@ -283,12 +262,12 @@
     <div class="post-nav">
       
         <div class="post-nav-prev post-nav-item">
-            <a href="/2021/07/26/05%20%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/" >05可编程音视频播放器<i class="fa fa-chevron-left"></i></a>
+            <a href="/2021/07/26/06%20%E6%88%90%E6%9E%9C%E6%BA%90%E7%A0%81/" >06 成果源码<i class="fa fa-chevron-left"></i></a>
         </div>
       
       
         <div class="post-nav-next post-nav-item">
-            <a href="/2021/07/26/03%20%E8%A7%A6%E6%91%B8%E5%B1%8F%E5%BA%94%E7%94%A8/" >03 触摸屏应用<i class="fa fa-chevron-right"></i></a>
+            <a href="/2021/07/26/04%20Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B/" >04 Linux多线程<i class="fa fa-chevron-right"></i></a>
         </div>
       
     </div>
