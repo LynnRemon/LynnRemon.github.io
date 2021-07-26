@@ -26,7 +26,7 @@
 
   
 
-  <title>Archives | Remon的记事本</title>
+  <title>01 文件IO | Remon的记事本</title>
 
   
 
@@ -191,56 +191,158 @@
 </header>
 
     
-<div class="post-wrap archive">
+<article id="post">
+  <div class="post-title">01 文件IO</div>
+  
+<div class="post-meta">
     
     
-        
-        
-        <div class="yearzodiac">
-                <div class="years">
-                  <h1>2021  <i class="symbolic-animals icon-ox"></i></h1>
-                </div>
-        </div>
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/01%20%E6%96%87%E4%BB%B6IO/">01 文件IO</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
+      <div class="post-meta-item date">
+        <span title="Created 2021.07.26"><i class="far fa-calendar-alt"></i> 2021.07.26</span>
+      </div>
+      <div class="post-meta-item updated">
+        <span title="Updated 2021.07.26"><i class="far fa-calendar-check"></i> 2021.07.26</span>
+      </div>
+     
     
+      <div class="post-meta-item categories">
         
+          <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E7%9C%8B%E4%BC%BC%E6%AD%A3%E7%BB%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">看似正经的学习笔记</a>
         
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/26/00%20Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">00 Linux基本操作</a>
-            <span class="archive-item-date">2021-07-26</span>
-        </li>
+      </div>
+     
     
+     <div class="post-meta-item wordcount">
         
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">503 words</span>
+           
         
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/16/%E8%A5%BF%E5%AE%89%E5%B0%8F%E8%AE%B0/">西安小记</a>
-            <span class="archive-item-date">2021-07-16</span>
-        </li>
-    
-        
-        
-        <li class="archive-item">
-            <a class="archive-item-link" href="/2021/07/07/First/">First</a>
-            <span class="archive-item-date">2021-07-07</span>
-        </li>
-    
-    <div class="arc_pag">
-       <nav class="paginator">
-      
-            
-</nav>
-
-     </div>
+          <i class="far fa-clock"></i> <span class="post-count">2 min</span>
+                               
+      </div>
+     
 </div>
 
 
+  
+  <div class="content">
+        <div><h1 id="文件io"><a href="#文件io" class="headerlink" title="文件io"></a><center>文件io</center></h1><h2 id="1-啥是文件io"><a href="#1-啥是文件io" class="headerlink" title="1.啥是文件io"></a>1.啥是文件io</h2><p>   i  in  输入<br>   o  out 输出</p>
+<p>   文件的输入输出</p>
+<p>   文件的读写</p>
+<h2 id="2-为啥要学文件io"><a href="#2-为啥要学文件io" class="headerlink" title="2.为啥要学文件io"></a>2.为啥要学文件io</h2><p>  ==一切皆文件==    <em>LINUX</em></p>
+<h2 id="3-文件操作的步骤"><a href="#3-文件操作的步骤" class="headerlink" title="3.文件操作的步骤"></a>3.文件操作的步骤</h2><pre><code>1.打开文件 open
+
+2.读写文件 read write
+
+3.关闭 文件  close
+</code></pre>
+<h2 id="4-代码编写"><a href="#4-代码编写" class="headerlink" title="4.代码编写"></a>4.代码编写</h2><p>​     </p>
+<pre><code>man 手册  ----linux系统说明书  
+</code></pre>
+<p>​<br>​       1   Executable programs or shell commands          指令介绍<br>​       2   System calls (functions provided by the kernel) 内核函数的介绍<br>​       3   Library calls (functions within program libraries)  库函数介绍  C语言库 </p>
+<h3 id="1-打开文件"><a href="#1-打开文件" class="headerlink" title="1.打开文件"></a>1.打开文件</h3><p>​     open<br>​       #include &lt;sys/types.h&gt;<br>​       #include &lt;sys/stat.h&gt;<br>​       #include &lt;fcntl.h&gt;//open函数头文件</p>
+<pre><code>   int open(const char *pathname, int flags);
+   参数一： 目标文件的路径名（文件名）
+   参数二： 操作权限 O_RDONLY, O_WRONLY, or O_RDWR 
+   
+   返回值：
+            成功  文件描述符 
+            失败  -1
+   1.txt ----文件描述符
+</code></pre>
+<h3 id="2-读写文件"><a href="#2-读写文件" class="headerlink" title="2.读写文件"></a>2.读写文件</h3><p>​     写入<br>​      write<br>​       #include &lt;unistd.h&gt;</p>
+<pre><code>   ssize_t write(int fd, const void *buf, size_t count);
+   参数一：目标文件的文件描述符  open的返回值
+   参数二：想要写入的数据  &quot;hello&quot;
+   参数三： 想要写入数据的大小 5     
+   返回值： 
+             成功  成功写入的数据字节数 
+             失败  -1
+             
+读取
+   read 
+   #include &lt;unistd.h&gt;
+  
+   ssize_t read(int fd, void *buf, size_t count);
+    参数一： 目标文件的文件描述符  open的返回值
+    参数二： 储存读取到的数据的缓冲区  数组 结构体 ，，，，，
+    参数三： 想要读取的数据大小  
+    返回值：  
+            成功  成功读取到的数据字节数   &lt;= 
+            失败   -1
+</code></pre>
+<h3 id="3-关闭文件"><a href="#3-关闭文件" class="headerlink" title="3.关闭文件"></a>3.关闭文件</h3><p>   close</p>
+<pre><code>close（fd）；             
+</code></pre>
+<p>​<br>​    练习<br>​          1.把小组成员的名字首字母写入到一个文件<br>​          2.尝试用read函数读取文件中的数据</p>
+<p>​          </p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>​     文件操作 光标<br>​     </p>
+<pre><code> lseek  移动光标
+ 
+   #include &lt;sys/types.h&gt;
+   #include &lt;unistd.h&gt;
+
+   off_t lseek(int fd, off_t offset, int whence);
+   参数一：目标文件的文件描述符 
+   参数二： 移动距离  5
+   参数三：参照位置  SEEK_SET 文件的起始位置  SEEK_CUR 当前位置   SEEK_END 末尾位置
+
+ 起点
+   lseek(fd ,0,SEEK_SET);
+</code></pre>
+</div>
+        
+          <div class="post-copyright">
+                  <div class="copyright-item">
+                      <span> Author: Remon</span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> Link: <a href="http://lynnremon.github.io/2021/07/26/01%20%E6%96%87%E4%BB%B6IO/">http://lynnremon.github.io/2021/07/26/01%20%E6%96%87%E4%BB%B6IO/</a></span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
+                  </div>
+          </div>
+        
+  </div>
+
+    <div class="post_tags">
+      
+    </div>
+    <div class="post-nav">
+      
+      
+        <div class="post-nav-next post-nav-item">
+            <a href="/2021/07/26/00%20Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" >00 Linux基本操作<i class="fa fa-chevron-right"></i></a>
+        </div>
+      
+    </div>
+      
 
 
 
+  <div id="valine"></div>
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  <script>
+        new Valine({
+          el: '#valine',
+          appId: "KmM61A8oMvUMXRrby0axQkGx-gzGzoHsz",
+          appKey: "0XVRwiQnROzLaM1tmxIBXjQu",
+          avatar: "mm",
+          lang: "",
+          meta: 'nick,mail,link'.split(','),
+          requiredFields: 'nick,mail'.split(','),
+          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
+          pageSize:'10',
+          recordIP: 'false',
+          serverURLs: "",
+          emojiCDN: "",
+          enableQQ: "true",
+        });
+  </script>
+  
+
+</article>
 
     
 <a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>

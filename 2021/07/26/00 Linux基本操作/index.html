@@ -26,7 +26,7 @@
 
   
 
-  <title>学习笔记 | Remon的记事本</title>
+  <title>00 Linux基本操作 | Remon的记事本</title>
 
   
 
@@ -192,26 +192,32 @@
 
     
 <article id="post">
-  <div class="post-title">学习笔记</div>
+  <div class="post-title">00 Linux基本操作</div>
   
 <div class="post-meta">
     
     
       <div class="post-meta-item date">
-        <span title="Created 2021.07.24"><i class="far fa-calendar-alt"></i> 2021.07.24</span>
+        <span title="Created 2021.07.26"><i class="far fa-calendar-alt"></i> 2021.07.26</span>
       </div>
       <div class="post-meta-item updated">
-        <span title="Updated 2021.07.24"><i class="far fa-calendar-check"></i> 2021.07.24</span>
+        <span title="Updated 2021.07.26"><i class="far fa-calendar-check"></i> 2021.07.26</span>
       </div>
      
+    
+      <div class="post-meta-item categories">
+        
+          <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E7%9C%8B%E4%BC%BC%E6%AD%A3%E7%BB%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">看似正经的学习笔记</a>
+        
+      </div>
      
     
      <div class="post-meta-item wordcount">
         
-          <i class="fas fa-pencil-alt"></i> <span class="post-count">0 words</span>
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">564 words</span>
            
         
-          <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+          <i class="far fa-clock"></i> <span class="post-count">2 min</span>
                                
       </div>
      
@@ -220,14 +226,100 @@
 
   
   <div class="content">
-        <div></div>
+        <div><h1 id="linux和windows"><a href="#linux和windows" class="headerlink" title="linux和windows"></a><center>linux和windows</center></h1><p>操作方式：<br>          linux 指令操作<br>          windows 界面图标</p>
+<p>文件架构：<br>          windows 目录从属于分区<br>          linux   分区从属于目录</p>
+<h2 id="Linux基本操作-基于Ubuntu系统"><a href="#Linux基本操作-基于Ubuntu系统" class="headerlink" title="Linux基本操作   基于Ubuntu系统"></a>Linux基本操作   <em>基于Ubuntu系统</em></h2><h3 id="1-打开一个操作终端"><a href="#1-打开一个操作终端" class="headerlink" title="1.打开一个操作终端"></a>1.打开一个操作终端</h3><pre><code> alt+ctrl+t 
+ 
+ gec  @ ubuntu :/bin$ 
+用户名@ 主机名 ：当前的操作路径 $ 命令行  
+</code></pre>
+<p>​    </p>
+<h3 id="2-基本shell指令"><a href="#2-基本shell指令" class="headerlink" title="2.基本shell指令"></a>2.基本shell指令</h3><p>​    </p>
+<pre><code>1.ls 显示当前目录下的文件 
+  ls -l 显示文件属性信息
+ -rwxr-xr-x 1 root root 1037528 May 16  2017 bash
+ - 普通文件  文本 多媒体 。。。。
+ c 字符设备文件 
+ b 块设备文件  存储设备
+ d 目录文件 
+ l 链接文件 快捷方式  
+ p 管道文件 进程通信
+ s 网络文件 网络通信
+ 
+2.cd 切换路径（打开文件夹）
+  cd 目录名
+  
+  ~   家目录快捷方式  /home/gec 等价与 ~  
+  /   根目录  
+  ..  返回上一级目录   
+  
+3.touch  新建普通文件
+      touch 文件名  
+
+4.mkdir  新建目录
+
+   mkdir 目录名      
+
+5.cp 复制文件
+ 
+  cp 目标文件 目标路径
+       gec@ubuntu:~$ cp 1.txt xa
+  
+  **复制文件夹？？
+   指令后面加上 -rf
+  gec@ubuntu:~$ cp 123 xa
+</code></pre>
+<p>cp: omitting directory ‘123’<br>gec@ubuntu:~$ cp 123 xa -rf</p>
+<pre><code>6.mv 移动文件 、重命名
+  
+  移动文件
+   mv 目标文件名 目标路径
+   
+   gec@ubuntu:~/xa$ mv 1.txt 123
+
+  ***移动文件夹 ？？？不需要 -rf  
+   
+   重命名
+       mv 旧名字 新名字
+       
+       gec@ubuntu:~/xa/123$ mv 1.txt 2.txt
+       gec@ubuntu:~/xa/123$ ls
+       2.txt
+
+7.rm 删除文件
+  
+  rm 文件名
+</code></pre>
+<p>​       </p>
+<pre><code> **删除目录文件 ？？？ 
+      
+   gec@ubuntu:~/xa$ rm 123 -rf
+</code></pre>
+<p>​       </p>
+<h2 id="共享文件夹"><a href="#共享文件夹" class="headerlink" title="共享文件夹"></a>共享文件夹</h2><pre><code>windows ：编写代码
+Linux ：  编译程序    
+</code></pre>
+<p>通过vm  新建共享目录</p>
+<p>1.先在windows上新建一个文件夹 share  （记住位置）</p>
+<p>2.通过vm 把 share 设置成共享目录</p>
+<p>   点击 palyer —》管理  —》虚拟机设置  —-》选择 选项 —-》<br>    点击 共享文件夹 —》右侧 选择 总是启用—-》删除掉原来的 目录节点—》<br>    添加 刚才创建的 share</p>
+<p>3.访问共享文件夹<br>  windows<br>  linux：<br>   cd /mnt/hgfs<br>   ls 查看是否有刚才新建的share目录</p>
+<h2 id="linux应用开发步骤"><a href="#linux应用开发步骤" class="headerlink" title="linux应用开发步骤"></a>linux应用开发步骤</h2><p>  1.编写 c 代码  （windows）</p>
+<p>  2.把写好的c程序保存到 共享文件夹</p>
+<p>  3.进入Linux系统 把c代码编译成 可执行程序</p>
+<pre><code> gec@ubuntu:/mnt/hgfs/share$ gcc demo.c -o demo  
+
+ gcc demo.c -o demo  
+</code></pre>
+<p>  4.运行程序<br>     ./demo</p>
+</div>
         
           <div class="post-copyright">
                   <div class="copyright-item">
                       <span> Author: Remon</span>
                   </div>
                   <div class="copyright-item">
-                      <span> Link: <a href="http://lynnremon.github.io/2021/07/24/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://lynnremon.github.io/2021/07/24/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span>
+                      <span> Link: <a href="http://lynnremon.github.io/2021/07/26/00%20Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">http://lynnremon.github.io/2021/07/26/00%20Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</a></span>
                   </div>
                   <div class="copyright-item">
                       <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
@@ -240,6 +332,10 @@
       
     </div>
     <div class="post-nav">
+      
+        <div class="post-nav-prev post-nav-item">
+            <a href="/2021/07/26/01%20%E6%96%87%E4%BB%B6IO/" >01 文件IO<i class="fa fa-chevron-left"></i></a>
+        </div>
       
       
         <div class="post-nav-next post-nav-item">
