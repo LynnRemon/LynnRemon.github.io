@@ -214,7 +214,7 @@
     
      <div class="post-meta-item wordcount">
         
-          <i class="fas fa-pencil-alt"></i> <span class="post-count">300 words</span>
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">276 words</span>
            
         
           <i class="far fa-clock"></i> <span class="post-count">1 min</span>
@@ -229,7 +229,7 @@
         <div><h1 id="lcd显示bmp"><a href="#lcd显示bmp" class="headerlink" title="lcd显示bmp"></a><center>lcd显示bmp</center></h1><h2 id="1-常见图片格式"><a href="#1-常见图片格式" class="headerlink" title="1.常见图片格式"></a>1.常见图片格式</h2><p>  jpg  png  bmp gif。。。。。。<br>  jpg png gif。。。经过特殊压缩处理，想要显示先进行解码</p>
 <p>  bmp 图片保存的最原始的rgb数据，不需要解码操作</p>
 <h2 id="2-bmp显示原理"><a href="#2-bmp显示原理" class="headerlink" title="2.bmp显示原理"></a>2.bmp显示原理</h2><p>  把24位bmp数据转换成32位的lcd数据写入到lcd驱动<br>  第y行第x列<br>lcd[0+4<em>x+800</em>4<em>y] = bmp[0+3</em>x+800<em>3</em>y];<br>lcd[1+4<em>x+800</em>4<em>y] = bmp[1+3</em>x+800<em>3</em>y];<br>lcd[2+4<em>x+800</em>4<em>y] = bmp[2+3</em>x+800<em>3</em>y];<br>lcd[3+4<em>x+800</em>4*y] = 0;</p>
-<p>![lcd显示bmp](C:\Users\Remon\AppData\Roaming\feiq\Recv Files\湖北文理\07 lcd显示bmp\pic\lcd显示bmp.png)</p>
+<p><img src= "/img/loading.gif" data-src="C:\Users\Remon\blog\source\pics\lcd显示bmp.png" alt="lcd显示bmp"></p>
 <h2 id="3-代码步骤"><a href="#3-代码步骤" class="headerlink" title="3.代码步骤"></a>3.代码步骤</h2><pre><code>1.打开lcd驱动
 
 2.申请虚拟共享内存
